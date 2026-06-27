@@ -651,6 +651,23 @@
     }
 
   </style>
+
+  <!-- Meta Pixel -->
+  <script>
+    !function(f,b,e,v,n,t,s)
+    {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+    n.callMethod.apply(n,arguments):n.queue.push(arguments)};
+    if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
+    n.queue=[];t=b.createElement(e);t.async=!0;
+    t.src=v;s=b.getElementsByTagName(e)[0];
+    s.parentNode.insertBefore(t,s)}(window, document,'script',
+    'https://connect.facebook.net/en_US/fbevents.js');
+    fbq('init', '873230481338340');
+  </script>
+  <noscript><img height="1" width="1" style="display:none"
+    src="https://www.facebook.com/tr?id=873230481338340&ev=PageView&noscript=1"
+  /></noscript>
+  <!-- End Meta Pixel -->
 </head>
 
 <body>
@@ -1711,6 +1728,80 @@
 </script>
 
 <script defer src="/_vercel/speed-insights/script.js"></script>
+
+  <!-- UTM Pass -->
+  <script>
+  (function () {
+    const parametros = ["utm_source", "utm_medium", "utm_campaign", "utm_term", "utm_content"];
+    const identificadorPagina = "LP_1";
+    let currentUrl;
+    try { currentUrl = window.top.location.href; } catch (e) { currentUrl = window.location.href; }
+    const r = new URL(currentUrl);
+    let scks = [identificadorPagina];
+    let utms = {};
+    parametros.forEach((el) => {
+      if (el.includes("source")) {
+        const val = r.searchParams.get(el);
+        const referrer = document.referrer ? new URL(document.referrer).hostname : "direto";
+        const finalVal = val ? val : referrer;
+        scks.push(finalVal);
+        utms[el] = finalVal;
+      } else {
+        const val = r.searchParams.get(el);
+        scks.push(val ? val : "");
+        utms[el] = val ? val : "";
+      }
+    });
+    scks = scks.filter(el => el !== "");
+    let sckStr = scks.join('|');
+    let sckParam = "sck=" + encodeURIComponent(sckStr);
+    let href = "";
+    for (let el in utms) {
+      if (utms[el]) href += el + "=" + encodeURIComponent(utms[el]) + "&";
+    }
+    href += sckParam;
+    const updateLinks = () => {
+      document.querySelectorAll('a').forEach(el => {
+        if (el.href && !el.href.includes("#") && !el.getAttribute('data-utm-added')) {
+          const separator = el.href.includes("?") ? "&" : "?";
+          if (el.href.includes('hotmart') || el.href.includes('wa.me')) {
+            el.href += separator + href;
+            el.setAttribute('data-utm-added', 'true');
+          }
+        }
+      });
+    };
+    updateLinks();
+    setInterval(updateLinks, 2000);
+  })();
+  </script>
+
+  <!-- Meta CAPI — PageView server-side -->
+  <script>
+  (function () {
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : '';
+    }
+    const eventId = crypto.randomUUID();
+    const fbc = getCookie('_fbc');
+    const fbp = getCookie('_fbp');
+    if (typeof fbq !== 'undefined') {
+      fbq('track', 'PageView', {}, { eventID: eventId });
+    }
+    fetch('/api/track', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        eventName: 'PageView',
+        eventSourceUrl: window.location.href,
+        fbc: fbc,
+        fbp: fbp,
+        eventId: eventId
+      })
+    }).catch(function(err) { console.error('CAPI error:', err); });
+  })();
+  </script>
 </body>
 </html>
                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                          
