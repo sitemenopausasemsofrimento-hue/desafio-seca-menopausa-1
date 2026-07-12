@@ -638,16 +638,6 @@
 <body>
 
 <!-- ================================================
-     BANNER ANTECIPAÇÃO
-================================================ -->
-<div style="position:fixed;top:0;left:0;width:100%;z-index:9999;background:#E8186B;padding:10px 20px;text-align:center;">
-  <p style="font-size:13px;color:#fff;line-height:1.5;font-weight:500;">
-    Assim que você entra, o desafio já começa. Você recebe tarefas para preparar o seu corpo antes do primeiro encontro ao vivo. Quem faz isso chega com vantagem.
-  </p>
-</div>
-<div style="height:42px;"></div>
-
-<!-- ================================================
      D01 HERO / PROMESSA
 ================================================ -->
 <section class="sec grain dark" style="padding-top:80px; padding-bottom:0; background-image: radial-gradient(ellipse at 50% 40%, rgba(80,20,40,0.50) 0%, transparent 65%);">
@@ -668,7 +658,7 @@
       </p>
 
       <p class="hero-date reveal d2">
-        O desafio ao vivo com médico especialista. De <strong style="color:#fff;">3 a 6 de agosto</strong>, às <strong style="color:#fff;">7h da manhã</strong>.
+        Ao vivo com médico especialista · <strong style="color:#fff;">3 a 6 de agosto</strong> · <strong style="color:#fff;">7h da manhã</strong>
       </p>
 
       <!-- Barra de urgência -->
@@ -686,15 +676,17 @@
         <p class="hero-price">por apenas R$29</p>
       </div>
 
+      <div class="reveal d4" style="max-width:420px;margin:20px auto 0;background:rgba(217,22,106,.12);border:1px solid rgba(217,22,106,.35);border-radius:12px;padding:14px 18px;display:flex;align-items:center;gap:12px;text-align:left;">
+        <span class="iconify" data-icon="ph:whatsapp-logo-fill" data-width="26" style="color:#25D366;flex-shrink:0;"></span>
+        <p style="font-size:15px;line-height:1.45;color:rgba(255,255,255,.92);font-weight:500;margin:0;">
+          Se inscreveu, já recebe o primeiro passo no WhatsApp. E começa a secar antes do ao vivo.
+        </p>
+      </div>
+
       <div class="hero-seals reveal d4" style="justify-content:center;">
         <span class="seal-item">
           <span class="iconify" data-icon="ph:shield-check-fill" data-width="16" style="color:#2EA86B"></span>
           Compra 100% segura
-        </span>
-        <span style="color:rgba(255,255,255,.25)">·</span>
-        <span class="seal-item">
-          <span class="iconify" data-icon="ph:check-circle-fill" data-width="16" style="color:#2EA86B"></span>
-          Mais de 500 mulheres já participaram
         </span>
       </div>
     </div>
@@ -702,14 +694,18 @@
     <!-- Foto abaixo do texto, full-width no rodapé da seção -->
     <div class="reveal d3" style="max-width:560px;margin:0 auto;position:relative;">
       <div class="photo-wrap" style="aspect-ratio:4/3;border-radius:16px 16px 0 0;overflow:hidden;">
-        <img src="img-hero-pedro.webp" alt="Dr. Pedro Paulo Nabuco"
+        <img src="img-hero-pedro.webp" alt="Dr. Pedro Paulo Nabuco, médico especialista em emagrecimento da mulher 40+"
              style="width:100%;height:100%;object-fit:cover;object-position:top;"
              onerror="this.style.display='none'; this.nextElementSibling.style.display='flex';">
         <div class="photo-overlay" style="background:linear-gradient(to top, #280B15 0%, transparent 40%), linear-gradient(to bottom, rgba(40,11,21,.3) 0%, transparent 30%);"></div>
         <div class="ph" style="display:none; height:100%; min-height:320px; border-radius:0;">
           <span class="iconify" data-icon="ph:user-circle" data-width="64" style="color:rgba(217,22,106,.4)"></span>
-          <span class="ph-name">img-hero-pedro.webp</span>
-          <span class="ph-spec">Foto do Dr. Pedro<br>na pasta </span>
+          <span class="ph-name">Dr. Pedro Paulo Nabuco</span>
+          <span class="ph-spec">Médico especialista em<br>emagrecimento da mulher 40+</span>
+        </div>
+        <div style="position:absolute;bottom:0;left:0;width:100%;padding:0 16px 18px;text-align:center;z-index:2;">
+          <p style="font-size:15px;font-weight:700;color:#fff;margin:0;">Dr. Pedro Paulo Nabuco</p>
+          <p style="font-size:13px;color:rgba(255,255,255,.80);margin:2px 0 0;">Médico especialista em emagrecimento da mulher 40+</p>
         </div>
       </div>
     </div>
@@ -1176,6 +1172,10 @@
       <p class="price-old">R$ 147</p>
       <p class="price-new" id="price-counter">R$ 29</p>
       <p class="price-label">pagamento único</p>
+
+      <p style="font-size:15px;line-height:1.5;color:var(--c-ink,#2C1019);margin:16px auto 20px;max-width:400px;">
+        Se inscreveu, já recebe o primeiro passo no WhatsApp. E começa a secar antes do ao vivo.
+      </p>
 
       <a href="https://pay.hotmart.com/N106363772B?checkoutMode=10&bid=1782320716137" class="btn btn-rose" style="width:100%;margin-bottom:20px;font-size:16px;height:56px;">
         QUERO PARTICIPAR DO DESAFIO →
@@ -1705,6 +1705,77 @@
     }).catch(function(err) { console.error('CAPI error:', err); });
   })();
   </script>
+
+<!-- ================================================
+     BARRA FIXA CTA MOBILE
+================================================ -->
+<style>
+  #cta-sticky-mobile { display: none; }
+  @media (max-width: 768px) {
+    #cta-sticky-mobile {
+      display: block;
+      position: fixed;
+      bottom: 0; left: 0; width: 100%;
+      z-index: 9998;
+      background: var(--c-dark, #2C1019);
+      padding: 10px 16px calc(10px + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 16px rgba(0,0,0,.25);
+    }
+    #cta-sticky-mobile a {
+      display: block;
+      text-align: center;
+      background: var(--c-accent, #D9166A);
+      color: #fff;
+      font-weight: 700;
+      font-size: 15px;
+      padding: 14px 12px;
+      border-radius: 10px;
+      text-decoration: none;
+    }
+    #cta-sticky-mobile p {
+      margin: 6px 0 0;
+      text-align: center;
+      font-size: 12px;
+      color: rgba(255,255,255,.75);
+    }
+    body { padding-bottom: 92px; }
+  }
+</style>
+<div id="cta-sticky-mobile">
+  <a href="https://pay.hotmart.com/N106363772B?checkoutMode=10&bid=1782320716137">QUERO PARTICIPAR → R$29</a>
+  <p>Desafio ao vivo · 3 a 6 de agosto</p>
+</div>
+
+<script>
+  (function () {
+    function getCookie(name) {
+      const match = document.cookie.match(new RegExp('(^| )' + name + '=([^;]+)'));
+      return match ? match[2] : '';
+    }
+    let icSent = false;
+    document.addEventListener('click', function (e) {
+      const link = e.target.closest('a[href*="pay.hotmart.com"]');
+      if (!link) return;
+      const eventId = crypto.randomUUID();
+      if (typeof fbq !== 'undefined') {
+        fbq('track', 'InitiateCheckout', { value: 29.00, currency: 'BRL' }, { eventID: eventId });
+      }
+      if (!icSent) {
+        icSent = true;
+        fetch('/api/track', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            eventName: 'InitiateCheckout',
+            eventSourceUrl: window.location.href,
+            fbc: getCookie('_fbc'),
+            fbp: getCookie('_fbp'),
+            eventId: eventId
+          })
+        }).catch(function(err) { console.error('CAPI error:', err); });
+      }
+    }, true);
+  })();
+  </script>
 </body>
 </html>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
